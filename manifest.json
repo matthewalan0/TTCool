@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "TTCool2.3.1",
+  "description": "TT为您服务",
+  "version": "2.3.1",
+  "icons":{
+    "16":"cat.png",
+    "48":"cat.png"
+  },
+  "browser_action": {
+    "default_icon": "cat.png",
+    "default_popup": "popup.html",
+    "default_title": "TTCool"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.zhihuishu.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    "TTCool.js"
+  ]
+}
