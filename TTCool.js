@@ -1,6 +1,6 @@
 /**
  * Author@AlanG
- * Email@matthewalan0@outlook.com
+ * Email@
  * Data@2019-11-17
  * Version@2.3.1
  */
@@ -16,7 +16,7 @@ window.onload = function () {
  * 选择是看见面课还是普通课程
  * 0为见面课，1为普通课程
  */
-let teachvideo = 0;
+let teachvideo = 1;
 
 /** 
  * 倍速设置
@@ -37,7 +37,7 @@ async function begin() {
     console.log('%c =>「时间计时初始化中，请稍等」', 'color:#00FFFF;')
     MyTime();
     console.log('%c =>「时间计时初始化成功」', 'color:#00FFFF;')
-    console.log("%c[" + myTime + "]现在是\"" + myTime + "\" TT很高兴为您服务", 'color:#00FFFF;');
+    console.log("%c[" + myTime + "]现在是 " + myTime + " TT很高兴为您服务", 'color:#00FFFF;');
 
     //检测是否为主页，如果是，点击用户头像进入用户中心
     if (url.search('www.zhihuishu.com') != -1) {
@@ -148,9 +148,14 @@ async function begin() {
         }
 
     }
-
+    if (url.search('studyh5.zhihuishu.com/videoStudy') != -1){
+        console.log('%c[' + myTime + ']检测到为新版播放网页，正在跳转至旧版播放网站', 'color:#00FFFF;');
+        window.alert("检测到为新版播放网页，确认跳转至旧版播放网页请点击确认");
+        let returnoldversion = document.querySelector('.returnoldversion');
+        returnoldversion.click()
+    }
     //检测当前网页是否为视频播放网页，如果是，就继续
-    if (url.search('study.zhihuishu.com/learningNew') != -1) {
+    if (url.search('study.zhihuishu.com/learning') != -1) {
         console.log('%c[' + myTime + ']网址确定', 'color:#00FFFF;');
         console.log('%c[' + myTime + ']初始化中，请稍等', 'color:#00FFFF;');
         if (teachvideo == 1) {
@@ -490,6 +495,7 @@ function getElement(ele) {
             let list = document.getElementById('chapterList').getElementsByTagName('li');
             if (list === null) {
                 console.log('%c[' + myTime + ']网速过慢，无法获取视频播放列表，请刷新页面', 'color:#00FFFF;')
+                window.alert("网速过慢，无法获取视频播放列表，请刷新页面");
             }
             return list
         }
